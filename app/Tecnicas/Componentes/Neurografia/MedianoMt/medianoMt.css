@@ -1,0 +1,699 @@
+/* Contenedor principal de la galería */
+.gallery-container {
+    position: relative;
+    width: 100%;
+    max-width: 60vw;
+    height: auto;
+    padding-bottom: 56.25%; /* Proporción de aspecto 16:9 */
+    overflow: hidden;
+    margin: auto;
+    margin-top: 2px;
+
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Contenedor del modal */
+.modal-content {
+    position: relative;
+    background: white;
+    padding: 5px;
+    border-radius: 8px;
+    width: 50vw; /* Un poco más pequeño que la galería */
+    max-width: 50vw; /* Se mantiene menor que 60vw */
+    max-height: 70vh; /* Evita que sea más alto que la pantalla */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+
+/* Imagen dentro del modal */
+.modal-image {
+    width: 90%;  /* La imagen ocupará el 90% del modal */
+    max-width: 27vw; /* Más pequeña que la galería (60vw) */
+    max-height: 60vh; /* Evita que imágenes altas ocupen demasiado espacio */
+    object-fit: contain; /* Mantiene la proporción sin recortar */
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    margin-bottom: 180px;
+    border: 2px solid #ffffff;
+}
+
+/* Botón de cierre */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    background: red;
+    color: white;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.print-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    background-color: #1C1C1C;
+    padding: 8px;
+    text-align: left;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 100%;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid #c44900;
+}
+
+
+.print-button:hover {
+background-color: #c44900;
+color: white;
+}
+
+.print-button.active {
+background-color: #c44900;
+color: white;
+}
+
+.close-btn:hover {
+    background: darkred;
+}
+
+
+
+.extra-image-container {
+    flex: 1; /* La imagen lateral ocupa menos espacio */
+    display: flex;
+    /*border: 2px solid #4a4a4a;  Borde para destacar */
+    padding: 5px;
+    background-color: transparent;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 30vw; /* Ajusta el tamaño máximo */
+    height: auto;
+    
+}
+
+
+.modal-gallery {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Fondo oscuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+/* Contenedor interno de la galería */
+.gallery-container .image-gallery {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.gallery-container .image-gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Llenado sin distorsión */
+}
+
+/* Posición de los bullets de navegación */
+.gallery-container .image-gallery-bullets {
+    position: absolute;
+    bottom: 10px; /* Reducido para adaptabilidad en móviles */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Media queries para pantallas pequeñas */
+@media (max-width: 768px) {
+    .gallery-container {
+        max-width: 60vw; /* Aumenta el ancho en pantallas pequeñas */
+    }
+
+    .btnM1, .btnM2, .btnM3, .btnM4, .btnM5, .btnM6, .btnM7, .btnM8, .btnM9, .btnM10,
+    .btnM11, .btnM12, .btnM13, .btnM14, .btnM15, .btnM16, .btnM17, .btnM18, .btnM19, .btnM20,
+    .btnM21, .btnM22, .btnM23, .btnM24, .btnM25, .btnM26, .btnM27, .btnM28, .btnM29, .btnM30,
+    .btnM31, .btnM32, .btnM33, .btnM34, .btnM35, .btnM36, .btnM37, .btnM38, .btnM39, .btnM40,
+    .btnM41, .btnM42, .btnM43, .btnM44, .btnM45 {
+        height: 10vw;
+        width: 10vw;
+        top: 35%;
+        padding: 3%;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-container {
+        max-width: 60vw;
+    }
+
+    .btnM1, .btnM2 {
+        height: 10vw;
+        width: 10vw;
+        top: 40%; /* Posición ajustada para pantallas muy pequeñas */
+    }
+
+    .gallery-container .image-gallery-bullets {
+        bottom: 2px; /* Más cerca del borde en móviles */
+    }
+}
+
+/* ################################# Botones de la primera imagen #########################*/
+
+.btnIMs1 {
+    position: absolute ;
+    background-image: url('/assets/ValoresImg/mEDX_64_Valores.png');
+    background-size: cover;
+    background-position: center;
+    border: 2px solid #4a4a4a; /* Borde de color gris oscuro */
+    height: 3.5vw; /* Tamaño reducido */
+    width: 3.5vw;
+    top: 30%;
+    left: 45%;
+    transform: translate(820%, -365%);
+    background-color: transparent;
+    border-radius: 20%;
+    z-index: 1;
+    color: rgb(226, 226, 226);
+    font-size: 1.5vw;
+    transition:all .2s ease-in-out;
+}
+
+.btnIMs2 {
+    position: absolute ;
+    background-image: url('/assets/ValoresImg/I_Tabla_Gris.png');
+    background-size: cover;
+    background-position: center;
+    border: 2px solid #4a4a4a;
+    height: 3.5vw; /* Tamaño reducido */
+    width: 3.5vw;
+    top: 30%;
+    left: 45%;
+    transform: translate(700%, -365%);
+    background-color: transparent;
+    border-radius: 20%;
+    z-index: 1;
+    color: rgb(10, 10, 10);
+    font-size: 1.5vw;
+    transition:all .2s ease-in-out;
+}
+
+
+
+/* Botón 1 */
+.btnM1 {
+    position: absolute;
+    height: 2.3vw; /* Tamaño reducido */
+    width: 2.3vw;
+    top: 30%;
+    left: 45%;
+    transform: translate(685%, 100%);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+    color: white;
+    font-size: 1.5vw;
+    transition:all .2s ease-in-out;
+
+    
+}
+/* Botón 2 */
+.btnM2 {
+    position: absolute;
+    height: 2.5vw; /* Tamaño reducido */
+    width: 2.5vw;
+    top: 30%;
+    left: 45%;
+    transform: translate(535%, -360%);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+    color: white;
+    font-size: 1.5vw;
+    transition:all .2s ease-in-out;
+}
+/* Botón 3 */
+.btnM3 {
+    position: absolute;
+    height: 2.3vw; /* Tamaño reducido */
+    width: 2.3vw;
+    top: 30%;
+    left: 55%;
+    transform: translate(67%, -240%);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+    color: white;
+    font-size: 1.5vw;
+    transition:all .2s ease-in-out;
+}
+
+.btnM4 {
+    position: absolute;
+    height: 2.3vw; /* Tamaño reducido */
+    width: 2.3vw;
+    top: 30%;
+    left: 55%;
+    transform: translate(-180%, 100%);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+    color: transparent;
+    font-size: 1.5vw;
+    transition:all .2s ease-in-out;
+}
+.btnM5 {
+    position: absolute;
+    height: 2.7vw; /* Tamaño reducido */
+    width: 2.7vw;
+    top: 30%;
+    left: 55%;
+    transform: translate(-498%, 254%);  
+    background-color:transparent;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+    font-size: 1.5vw;
+}
+
+.btnM6 {
+    position: absolute;
+    height: 2.3vw; /* Tamaño reducido */
+    width: 2.3vw;
+    top: 30%;
+    left: 55%;
+    transform: translate(-1265%, 290%);
+    background-color:transparent;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+
+/* ################################# Botones de la segunda imagen #########################*/
+.btnM7 {
+    position: absolute;
+    height: 2vw; /* Tamaño reducido */
+    width: 2vw;
+    top: 30%;
+    left: 55%;
+    transform: translate(-930%, -320%);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.btnM8 {
+    position: absolute;
+    height: 2vw; /* Tamaño reducido */
+    width: 2vw;
+    top: 30%;
+    left: 55%;
+    transform: translate(-795%, -190%);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.btnM9 {
+    position: absolute;
+    height: 2.1vw; /* Tamaño reducido */
+    width: 2.1vw;
+    top: 30%;
+    left: 55%;
+    transform: translate(-550%, 130%);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.btnM10 {
+    position: absolute;
+    height: 2.5vw; /* Tamaño reducido */
+    width: 2.5vw;
+    top: 30%;
+    left: 55%;
+    transform: translate(-95%, 120%);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.btnM11 {
+    position: absolute;
+    height: 2.1vw; /* Tamaño reducido */
+    width: 2.1vw;
+    top: 30%;
+    left: 55%;
+    transform: translate(110%, 350%);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.btnM12 {
+    position: absolute;
+    height: 2.1vw; /* Tamaño reducido */
+    width: 2.1vw;
+    top: 30%;
+    left: 55%;
+    transform: translate(610%, 370%);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.btnM13 {
+    position: absolute;
+    height: 2.1vw; /* Tamaño reducido */
+    width: 2.1vw;
+    top: 30%;
+    left: 55%;
+    transform: translate(998%, 470%);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+
+/* ################################# Botones de la tercera imagen #########################*/
+.btnM14 {
+    position: absolute;
+    height: 2.8vw; /* Tamaño reducido */
+    width: 2.8vw;
+    top: 30%;
+    left: 55%;
+    transform: translate(-1050%, 225%);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.btnM15 {
+    position: absolute;
+    height: 3vw; /* Tamaño reducido */
+    width: 3vw;
+    top: 30%;
+    left: 55%;
+    transform: translate(-465%, 225%);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.btnM16 {
+    position: absolute;
+    height: 2.5vw; /* Tamaño reducido */
+    width: 2.5vw;
+    top: 30%;
+    left: 55%;
+    transform: translate(-230%, -130%);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.btnM17 {
+    position: absolute;
+    height: 2.5vw; /* Tamaño reducido */
+    width: 2.5vw;
+    top: 30%;
+    left: 55%;
+    transform: translate(-105%, -125%);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+
+
+/* ################################# Botones de la cuarta imagen #########################*/
+
+.btnM18 {
+    position: absolute;
+    height: 2.5vw; /* Tamaño reducido */
+    width: 2.5vw;
+    top: 30%;
+    left: 55%;
+    transform: translate(-550%, -130%);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.btnM19 {
+    position: absolute;
+    height: 2.5vw; /* Tamaño reducido */
+    width: 2.5vw;
+    top: 30%;
+    left: 55%;
+    transform: translate(-350%, -200%);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.btnM20 {
+    position: absolute;
+    height: 2.8vw; /* Tamaño reducido */
+    width: 2.8vw;
+    top: 30%;
+    left: 55%;
+    transform: translate(100%, -70%);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.btnM21 {
+    position: absolute;
+    height: 2.5vw; /* Tamaño reducido */
+    width: 2.5vw;
+    top: 30%;
+    left: 55%;
+    transform: translate(815%, 210%);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+/* ################################# Botones de la quinta imagen #########################*/
+.btnM22 {
+    position: absolute;
+    height: 2.5vw; /* Tamaño reducido */
+    width: 2.5vw;
+    top: 30%;
+    left: 55%;
+    transform: translate(-350%, -55%);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.btnM23 {
+    position: absolute;
+    height: 2.7vw; /* Tamaño reducido */
+    width: 2.7vw;
+    top: 30%;
+    left: 55%;
+    transform: translate(90%, 10%);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.btnM24 {
+    position: absolute;
+    height: 2.3vw; /* Tamaño reducido */
+    width: 2.3vw;
+    top: 30%;
+    left: 55%;
+    transform: translate(500%, 420%);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.btnM25 {
+    position: absolute;
+    height: 2.3vw; /* Tamaño reducido */
+    width: 2.3vw;
+    top: 30%;
+    left: 55%;
+    transform: translate(930%, 160%);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+
+
+/* ################################# Botones de la sexta imagen #########################*/
+.btnM26 {
+    position: absolute;
+    height: 2.3vw; /* Tamaño reducido */
+    width: 2.3vw;
+    top: 30%;
+    left: 55%;
+    transform: translate(930%, 155%);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.btnM27 {
+    position: absolute;
+    height: 2.3vw; /* Tamaño reducido */
+    width: 2.3vw;
+    top: 30%;
+    left: 55%;
+    transform: translate(80%, -155%);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.btnM28 {
+    position: absolute;
+    height: 2.8vw; /* Tamaño reducido */
+    width: 2.8vw;
+    top: 30%;
+    left: 55%;
+    transform: translate(150%, 225%);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+.btnM29 {
+    position: absolute;
+    height: 2.3vw; /* Tamaño reducido */
+    width: 2.3vw;
+    top: 30%;
+    left: 55%;
+    transform: translate(625%, 390%);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+
+
+.btnM30 {
+    position: absolute;
+    height: 2.2vw; /* Tamaño reducido */
+    width: 2.2vw;
+    top: 25%;
+    left: 50%;
+    transform: translate(-375%, 220%);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.btnM31 {
+    position: absolute;
+    height: 3.8vw; /* Tamaño reducido */
+    width: 3.8vw;
+    top: 25%;
+    left: 50%;
+    transform: translate(-210%, -175%);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.btnM32 {
+    position: absolute;
+    height: 3.8vw; /* Tamaño reducido */
+    width: 3.8vw;
+    top: 25%;
+    left: 50%;
+    transform: translate(10%, -270%);
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+
+.text-boxM {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 27vw;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(66, 66, 66, 0.842);
+    color: white;
+    border-radius: 10px;
+    padding: 2%;
+    box-shadow: 0 4px 8px rgba(8, 8, 8, 0.377);
+    font-family: 'Arial', sans-serif;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    white-space: pre-line; /* Asegura que los saltos de línea se respeten */
+}
+
+.zoomable-imageMt:hover {
+    transform: scale(3.0); /* Ajusta el valor de escala según sea necesario */
+    transform-origin: top left; /* Expande hacia la derecha y hacia abajo */
+    position: center;
+}
+
