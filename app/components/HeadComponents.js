@@ -6,7 +6,7 @@ const HeadComponents = () => {
   const { data: session } = useSession();
 
   return (
-    <div>
+    <div className="sticky top-0 left-0 right-0 z-50">
       <Overhead />
       <OverheadMenu />
       <hr className="bg-white" style={{ height: '0.2px' }} />
