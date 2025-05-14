@@ -61,13 +61,26 @@ export default function LandingPage() {
   return (
     <>
       <div
-        className="w-full bg-cover bg-center bg-fixed text-white"
-        style={{ backgroundImage: "url('/assets/LandingPage/fondo.png')" }}
+        className="w-full bg-black bg-center bg-fixed text-white"
+       
       >
+
+<div className="max-w-screen-xl mx-auto px-4 pt-12" data-aos="fade-up">
+        <video
+          src="/assets/LandingPage/Videos/cierrevoz.mp4"
+          controls
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full mx-auto rounded-2xl shadow-lg"
+        />
+      </div>
+
+
 
               {/* ===== Vídeo al inicio ===== */}
       <div className="max-w-screen-xl mx-auto px-4 pt-12" data-aos="fade-up">
-        <h2 className="text-4xl font-bold mb-4">mEDXpro</h2>
         <video
           src="/assets/LandingPage/Videos/medx-texto_cambios.mp4"
           controls
@@ -156,87 +169,67 @@ export default function LandingPage() {
   data-aos="fade-up"
 >
   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-    {/* Manuales Interactivos */}
-    <div
-      className="bg-orange-600 text-white rounded-3xl h-64 p-8 shadow-lg flex items-center gap-4"
-      data-aos="fade-up"
-      data-aos-duration="600"
-    >
-      {/* Si quieres un icono, ponlo aquí, por ejemplo un SVG: */}
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="w-8 h-8 flex-shrink-0"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
+    {/* ───────── Columna IZQUIERDA ───────── */}
+    <div className="flex flex-col gap-5">
+      {/* Manuales interactivos */}
+      <div
+        className="bg-white overflow-hidden rounded-3xl shadow-lg"
+        data-aos="fade-right"
+        data-aos-duration="800"
       >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M9 12h6m-6 4h6m2 4H7a2 2 0 01-2-2V6a2 2..."
+        <Image
+          src="/assets/LandingPage/Page/LP-06.png"
+          alt="Manuales Interactivos"
+          width={600}
+          height={200}
+          className="w-full h-auto object-cover rounded-3xl"
         />
-      </svg>
-      <h3 className="text-2xl font-semibold">Manuales Interactivos</h3>
-    </div>
-
-    {/* Estudios de Conducción Nerviosa */}
-    <div
-      className="bg-gray-100 rounded-3xl h-64 overflow-hidden shadow-lg relative"
-      data-aos="fade-right"
-      data-aos-duration="800"
-      data-aos-delay="200"
-    >
-      <Image
-        src="/assets/LandingPage/Page/LP-06.png"
-        alt="Estudios de Conducción Nerviosa"
-        fill
-        className="object-cover"
-      />
-      <div className="absolute bottom-6 left-6">
-        <h3 className="text-2xl font-semibold text-gray-800">
-          Estudios de Conducción Nerviosa
-        </h3>
+      </div>
+      {/* Potenciales Evocados */}
+      <div
+        className="bg-gray-50 overflow-hidden rounded-3xl shadow-lg"
+        data-aos="zoom-in"
+        data-aos-duration="800"
+      >
+        <Image
+          src="/assets/LandingPage/Page/LP-09.png"
+          alt="Potenciales Evocados"
+          width={600}
+          height={400}
+          className="w-full h-auto object-cover rounded-3xl"
+        />
       </div>
     </div>
 
-    {/* Potenciales Evocados */}
-    <div
-      className="bg-gray-100 rounded-3xl h-64 overflow-hidden shadow-lg relative"
-      data-aos="fade-left"
-      data-aos-duration="800"
-      data-aos-delay="400"
-    >
-      <Image
-        src="/assets/LandingPage/Page/LP-07.png"
-        alt="Potenciales Evocados"
-        fill
-        className="object-cover"
-      />
-      <div className="absolute bottom-6 left-6">
-        <h3 className="text-2xl font-semibold text-gray-800">
-          Potenciales Evocados
-        </h3>
+    {/* ───────── Columna DERECHA ───────── */}
+    <div className="flex flex-col gap-5">
+      {/* Estudios de Conducción Nerviosa */}
+      <div
+        className="bg-white overflow-hidden rounded-3xl shadow-lg"
+        data-aos="fade-left"
+        data-aos-duration="800"
+      >
+        <Image
+          src="/assets/LandingPage/Page/LP-08.png"
+          alt="Estudios de Conducción Nerviosa"
+          width={600}
+          height={350}
+          className="w-full h-auto object-cover rounded-3xl"
+        />
       </div>
-    </div>
-
-    {/* Monitoreo Trasquirúrgico */}
-    <div
-      className="bg-gray-100 rounded-3xl h-64 overflow-hidden shadow-lg relative"
-      data-aos="zoom-in"
-      data-aos-duration="800"
-      data-aos-delay="600"
-    >
-      <Image
-        src="/assets/LandingPage/Page/LP-08.png"
-        alt="Monitoreo Trasquirúrgico"
-        fill
-        className="object-cover"
-      />
-      <div className="absolute bottom-6 left-6">
-        <h3 className="text-2xl font-semibold text-gray-800">
-          Monitoreo Trasquirúrgico
-        </h3>
+      {/* Monitoreo Trasquirúrgico */}
+      <div
+        className="bg-white overflow-hidden rounded-3xl shadow-lg"
+        data-aos="flip-up"
+        data-aos-duration="800"
+      >
+        <Image
+          src="/assets/LandingPage/Page/LP-07.png"
+          alt="Monitoreo Trasquirúrgico"
+          width={600}
+          height={250}
+          className="w-full h-auto object-cover rounded-3xl"
+        />
       </div>
     </div>
   </div>
