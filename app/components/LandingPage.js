@@ -50,9 +50,9 @@ export default function LandingPage() {
   ];
 
   const infoCards = [
-    { img: "/coffee/mid1.png", label: "Podcasts", title: "Información Médica" },
-    { img: "/coffee/mid2.png", label: "Videos", title: "Información Médica" },
-    { img: "/coffee/mid3.png", label: "Reportes", title: "Información Médica" },
+    { img: "/assets/LandingPage/Page/LP-11.png", label: "Podcasts", title: "Información Médica" },
+    { img: "/assets/LandingPage/Page/LP-12.png", label: "Videos", title: "Información Médica" },
+    { img: "/assets/LandingPage/Page/LP-13.png", label: "Reportes", title: "Información Médica" },
   ];
 
   const prevRef = useRef(null);
@@ -64,21 +64,6 @@ export default function LandingPage() {
         className="w-full bg-black bg-center bg-fixed text-white"
        
       >
-
-<div className="max-w-screen-xl mx-auto px-4 pt-12" data-aos="fade-up">
-        <video
-          src="/assets/LandingPage/Videos/cierrevoz.mp4"
-          controls
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full mx-auto rounded-2xl shadow-lg"
-        />
-      </div>
-
-
-
               {/* ===== Vídeo al inicio ===== */}
       <div className="max-w-screen-xl mx-auto px-4 pt-12" data-aos="fade-up">
         <video
@@ -235,9 +220,6 @@ export default function LandingPage() {
   </div>
 </section>
 
-
-
-
         {/* ===== Banner Slider ===== */}
         <div className="max-w-screen-xl mx-auto px-4">
           <Swiper
@@ -276,14 +258,117 @@ export default function LandingPage() {
           </Swiper>
         </div>
 
+{ /* ===== Masonry a 2 columnas (3 imágenes c/u) ===== */ }
+<section
+  className="max-w-screen-xl mx-auto px-4 py-20"
+  data-aos="fade-up"
+>
+  <div className="flex flex-col md:flex-row md:space-x-8">
+    { /* — Columna 1 — */ }
+    <div className="flex flex-col space-y-8 md:w-1/2">
+      {/* 1 */}
+      <div
+        className="relative h-96 overflow-hidden rounded-3xl shadow-lg"
+        data-aos="fade-down"
+        data-aos-duration="800"
+      >
+        <Image
+          src="/assets/LandingPage/Page/LP-17.png"
+          alt="Campo total"
+          fill
+          className="object-cover"
+        />
+      </div>
+
+      {/* 2 */}
+      <div
+        className="relative h-48 overflow-hidden rounded-3xl shadow-lg"
+        data-aos="fade-right"
+        data-aos-duration="800"
+        data-aos-delay="150"
+      >
+        <Image
+          src="/assets/LandingPage/Page/LP-19.png"
+          alt="Potenciales Evocados"
+          fill
+          className="object-cover"
+        />
+      </div>
+
+      {/* 3 */}
+      <div
+        className="relative h-96 overflow-hidden rounded-3xl shadow-lg"
+        data-aos="zoom-in"
+        data-aos-duration="800"
+        data-aos-delay="300"
+      >
+        <Image
+          src="/assets/LandingPage/Page/LP-21.png"
+          alt="MEDXpro SHOP"
+          fill
+          className="object-cover"
+        />
+      </div>
+    </div>
+
+    { /* — Columna 2 — */ }
+    <div className="flex flex-col space-y-8 md:w-1/2">
+      {/* 4 */}
+      <div
+        className="relative h-96 overflow-hidden rounded-3xl shadow-lg"
+        data-aos="fade-left"
+        data-aos-duration="800"
+        data-aos-delay="450"
+      >
+        <Image
+          src="/assets/LandingPage/Page/LP-18.png"
+          alt="Ya Disponible"
+          fill
+          className="object-cover"
+        />
+      </div>
+
+      {/* 5 */}
+      <div
+        className="relative h-96 overflow-hidden rounded-3xl shadow-lg"
+        data-aos="flip-up"
+        data-aos-duration="800"
+        data-aos-delay="600"
+      >
+        <Image
+          src="/assets/LandingPage/Page/LP-20.png"
+          alt="Próximamente"
+          fill
+          className="object-cover"
+        />
+      </div>
+
+      {/* 6 */}
+      <div
+        className="relative h-48 overflow-hidden rounded-3xl shadow-lg"
+        data-aos="fade-up"
+        data-aos-duration="800"
+        data-aos-delay="750"
+      >
+        <Image
+          src="/assets/LandingPage/Page/LP-22.png"
+          alt="Manuales Físicos"
+          fill
+          className="object-cover"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
         {/* ===== Scroll-Triggered Sections ===== */}
         <section className="max-w-screen-xl mx-auto px-4 my-20">
 
           {/* ===== Collage Marquee ===== */}
-          <div data-aos="fade-up" className="overflow-hidden py-8">
-            <div className="inline-flex marquee gap-4">
+          {/* <div data-aos="fade-up" className="overflow-hidden py-8">
+            <div className="inline-flex marquee gap-4"> */}
               {/* duplicamos el array para scroll infinito */}
-              {[...marqueeImages, ...marqueeImages].map((src, i) => (
+              {/* {[...marqueeImages, ...marqueeImages].map((src, i) => (
                 <div
                   key={i}
                   className="flex-shrink-0 w-64 h-72 relative rounded-lg overflow-hidden"
@@ -297,7 +382,7 @@ export default function LandingPage() {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
 
         
 
@@ -334,7 +419,7 @@ export default function LandingPage() {
                 <SwiperSlide
                   key={idx}
                   data-slide-bg-color={slide.bg}
-                  style={{ width: 1000, backgroundColor: slide.bg }}
+                  style={{ width: 500, backgroundColor: slide.bg }}
                 >
                   <div
                     className="fashion-slider-title"
@@ -384,37 +469,25 @@ export default function LandingPage() {
               optio quisquam dicta maxime, perferendis veniam!
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
-            {infoCards.map((card, i) => (
-              <div
-                key={i}
-                className="relative bg-white text-black shadow-lg hover:shadow-xl px-8 md:px-12 py-8 rounded-lg hover:scale-105 transition-all"
-                data-aos="fade-left"
-                data-aos-duration={1200 + i * 200}
-                data-aos-easing="ease-in-out-back"
-              >
-                <div className="grid grid-cols-2 gap-6 items-end">
-                  <Image
-                    src={card.img}
-                    width={280}
-                    height={280}
-                    alt={card.title}
-                    className="absolute -right-8 bottom-0"
-                  />
-                  <div>
-                    <p className="text-gray-500 text-lg">{card.label}</p>
-                    <h3 className="text-3xl py-2 font-semibold text-gray-700">
-                      {card.title}
-                    </h3>
-                  </div>
-                </div>
-                <p className="py-3 text-gray-500 text-lg">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-                  dicta alias id, nostrum rerum cum ducimus omnis sequi cumque nam.
-                </p>
-              </div>
-            ))}
-          </div>
+         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+    {infoCards.map((card, i) => (
+      <div
+        key={i}
+        className="overflow-hidden rounded-3xl shadow-lg transform hover:scale-105 transition-all duration-700"
+        data-aos="zoom-in"
+        data-aos-delay={i * 200}
+        data-aos-duration="1000"
+      >
+        <Image
+          src={card.img}
+          alt={card.title}
+          width={600}
+          height={400}
+          className="w-full h-full object-cover"
+        />
+      </div>
+    ))}
+  </div>
         </section>
       </div>
 
