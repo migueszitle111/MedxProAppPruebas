@@ -1,3 +1,4 @@
+// page.js
 "use client";
 import React, { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
@@ -11,35 +12,44 @@ import FooterComponents from "./components/FooterComponents";
 import LandingPage from "./components/LandingPage";
 
 const Home = () => {
-  const { data: session, status } = useSession();
-  const isAdmin = session?.user?.roles === "admin";
+  const { data: session } = useSession();
 
-  // 👉 Esto garantiza que la lógica solo corre en el cliente
+  // Solo cliente
   const [isClient, setIsClient] = useState(false);
+  // Controla visualización del loader
+  const [showLoader, setShowLoader] = useState(true);
 
   useEffect(() => {
     setIsClient(true);
+    // Después de 1 segundo, oculta el loader
+    const t = setTimeout(() => {
+      setShowLoader(false);
+    }, 3000);
+    return () => clearTimeout(t);
   }, []);
 
-  if (!isClient) return null; // ⛔️ No renderiza nada hasta que esté en el cliente
+  if (!isClient) return null;
 
-  if (status === "loading") {
+  // 🚀 Loader fijo de 1 segundo
+  if (showLoader) {
     return (
       <>
         <HeadComponents />
-       <div className="fixed top-0 left-0 w-full h-full z-[9999]">
-  <video
-    src="/assets/LandingPage/Videos/cierrevoz.mp4"
-    autoPlay
-    muted
-    loop
-    className="w-full h-full object-cover"
-  />
-</div>
-
+        <div className="fixed top-0 left-0 w-full h-full z-[9999]">
+          <video
+            src="/assets/LandingPage/Videos/cierrevoz.mp4"
+            autoPlay
+            muted
+            loop
+            className="w-full h-full object-cover"
+          />
+        </div>
       </>
     );
   }
+
+  // 🚀 Aquí va el contenido real de tu app
+  const isAdmin = session?.user?.roles === "admin";
 
   return (
     <>
