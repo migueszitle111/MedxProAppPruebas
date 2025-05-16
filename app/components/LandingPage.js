@@ -242,7 +242,7 @@ export default function LandingPage() {
                         mEDXpro 
                       </h1>
                       <p className="py-4" data-aos="fade-right">
-  Aplicación web disponible app móvil el 16 de septiembre</p>
+  Aplicación web disponible , app móvil proximamente</p>
 
                   </div>
                     <div
