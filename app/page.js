@@ -2,7 +2,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
-
 import HeadComponents from "./components/HeadComponents";
 import SubMenu from "./components/Submenu";
 import Navbar from "./components/Navbar";

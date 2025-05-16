@@ -219,9 +219,9 @@ export default function LandingPage() {
     </div>
   </div>
 </section>
-
+ 
         {/* ===== Banner Slider ===== */}
-        <div className="max-w-screen-xl mx-auto px-4">
+        <div className="max-w-screen-xl mx-auto px-4 -mt-40">
           <Swiper
             modules={[Autoplay, Pagination]}
             spaceBetween={30}
@@ -242,9 +242,9 @@ export default function LandingPage() {
                         mEDXpro 
                       </h1>
                       <p className="py-4" data-aos="fade-right">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      </p>
-                    </div>
+  Aplicación web disponible app móvil el 16 de septiembre</p>
+
+                  </div>
                     <div
                       className="flex items-center justify-center"
                       data-aos="fade-left"
@@ -257,10 +257,33 @@ export default function LandingPage() {
             ))}
           </Swiper>
         </div>
+         {/* ===== Info Cards ===== */}
+        <section className="max-w-screen-xl mx-auto px-4  pt-8 pb-4" data-aos="fade-up">
+          
+         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+    {infoCards.map((card, i) => (
+      <div
+        key={i}
+        className="overflow-hidden rounded-3xl shadow-lg transform hover:scale-105 transition-all duration-700"
+        data-aos="zoom-in"
+        data-aos-delay={i * 200}
+        data-aos-duration="1000"
+      >
+        <Image
+          src={card.img}
+          alt={card.title}
+          width={600}
+          height={400}
+          className="w-full h-full object-cover"
+        />
+      </div>
+    ))}
+  </div>
+        </section>
 
 { /* ===== Masonry a 2 columnas (3 imágenes c/u) ===== */ }
 <section
-  className="max-w-screen-xl mx-auto px-4 py-20"
+  className="max-w-screen-xl mx-auto px-4 py-10"
   data-aos="fade-up"
 >
   <div className="flex flex-col md:flex-row md:space-x-8">
@@ -387,108 +410,10 @@ export default function LandingPage() {
         
 
           {/* ===== Fashion Slider ===== */}
-          <div data-aos="fade-up" className="mb-12 relative">
-            <h2 className="text-4xl font-bold mb-4">Informacion</h2>
-            <Swiper
-              modules={[EffectCoverflow, Parallax, Pagination, Navigation, Autoplay]}
-              effect="coverflow"
-              grabCursor
-              centeredSlides
-              slidesPerView="auto"
-              parallax
-              coverflowEffect={{
-                rotate: 0,
-                stretch: 0,
-                depth: 200,
-                modifier: 1,
-                slideShadows: false,
-              }}
-              speed={1300}
-              onInit={(swiper) => {
-                swiper.params.navigation.prevEl = prevRef.current;
-                swiper.params.navigation.nextEl = nextRef.current;
-                swiper.navigation.init();
-                swiper.navigation.update();
-              }}
-              navigation={{ prevEl: prevRef.current, nextEl: nextRef.current }}
-              pagination={{ clickable: true }}
-              autoplay={{ delay: 3000, disableOnInteraction: false }}
-              className="fashion-slider py-8"
-            >
-              {fashionSlides.map((slide, idx) => (
-                <SwiperSlide
-                  key={idx}
-                  data-slide-bg-color={slide.bg}
-                  style={{ width: 500, backgroundColor: slide.bg }}
-                >
-                  <div
-                    className="fashion-slider-title"
-                    data-swiper-parallax="-130%"
-                  >
-                    <div
-                      className="fashion-slider-title-text"
-                      data-swiper-parallax="-100%"
-                    >
-                      {slide.title}
-                    </div>
-                  </div>
-                  <div
-                    className="fashion-slider-scale"
-                    data-swiper-parallax="-165%"
-                  >
-                    <img
-                      src={slide.img}
-                      alt={slide.title}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-
-            {/* botones personalizados */}
-            <div
-              ref={prevRef}
-              className="fashion-slider-button-prev fashion-slider-button"
-            />
-            <div
-              ref={nextRef}
-              className="fashion-slider-button-next fashion-slider-button"
-            />
-          </div>
+          
         </section>
 
-        {/* ===== Info Cards ===== */}
-        <section className="max-w-screen-xl mx-auto px-4 py-20" data-aos="fade-up">
-          <div className="text-center mb-16">
-            <h1 className="text-3xl md:text-5xl font-bold">
-              Todo sobre MEDxPro APP
-            </h1>
-            <p className="py-4 md:w-2/4 mx-auto text-gray-300 text-lg">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
-              optio quisquam dicta maxime, perferendis veniam!
-            </p>
-          </div>
-         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-    {infoCards.map((card, i) => (
-      <div
-        key={i}
-        className="overflow-hidden rounded-3xl shadow-lg transform hover:scale-105 transition-all duration-700"
-        data-aos="zoom-in"
-        data-aos-delay={i * 200}
-        data-aos-duration="1000"
-      >
-        <Image
-          src={card.img}
-          alt={card.title}
-          width={600}
-          height={400}
-          className="w-full h-full object-cover"
-        />
-      </div>
-    ))}
-  </div>
-        </section>
+      
       </div>
 
       {/* ==== estilos globales override ==== */}
@@ -531,6 +456,11 @@ export default function LandingPage() {
           stroke: white;
           stroke-width: 2;
         }
+ .swiper-pagination,
+  .swiper-pagination-bullet {
+    display: none !important;
+  }
+
       `}</style>
     </>
   );
