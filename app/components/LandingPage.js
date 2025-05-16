@@ -221,7 +221,7 @@ export default function LandingPage() {
 </section>
  
         {/* ===== Banner Slider ===== */}
-        <div className="max-w-screen-xl mx-auto px-4 -mt-40">
+        <div className="max-w-screen-xl mx-auto px-4 -mt-5">
           <Swiper
             modules={[Autoplay, Pagination]}
             spaceBetween={30}
