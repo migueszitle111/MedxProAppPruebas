@@ -27,10 +27,37 @@ export default function LandingPage() {
     AOS.init({ once: false, mirror: false, duration: 1000 });
   }, []);
 
-  const bannerSlides = [
-    "/assets/LandingPage/movil.png",
-    "/assets/LandingPage/laptop.png",
-  ];
+     // 1) Define tus slides con un array de objetos
+// components/LandingPage.jsx
+// …
+const bannerSlides = [
+  {
+    img: "/assets/LandingPage/laptop.png",    // antes: laptop.png
+    title: "Versión",
+    highlight: "Web",
+    highlightBg: "bg-[#B54B00]",
+    caption: "Ya disponible",
+    descriptionParts: [
+      "Elabora tus reportes anatómicos sobre patologías del ",
+      { text: "Sistema Nervioso Periférico", bold: true },
+      " gracias a la selección de opciones y añade los registros neurofisiológicos de tus casos clínicos."
+    ]
+  },
+  {
+    img: "/assets/LandingPage/movil.png",    // antes: movil.png
+    title: "Versión",
+    highlight: "App",
+    highlightBg: "bg-[#B54B00]",
+    caption: "A partir del 16 Septiembre 2025",
+    descriptionParts: [
+       { text: "Disponible en México", bold: true, block: true },
+      { text: "con todo el contenido.", bold: false, block: true }
+    ]
+  }
+];
+
+
+
 
   // Imágenes para el collage (marquee)
   const marqueeImages = [
@@ -222,40 +249,72 @@ export default function LandingPage() {
  
         {/* ===== Banner Slider ===== */}
         <div className="max-w-screen-xl mx-auto px-4 -mt-5">
-          <Swiper
-            modules={[Autoplay, Pagination]}
-            spaceBetween={30}
-            centeredSlides
-            autoplay={{ delay: 5000, disableOnInteraction: false }}
-            pagination={{ clickable: true }}
-            className="h-screen"
+       <Swiper
+  modules={[Autoplay, Pagination]}
+  spaceBetween={30}
+  centeredSlides
+  autoplay={{ delay: 5000, disableOnInteraction: false }}
+  pagination={{ clickable: true }}
+  className="h-screen"
+>
+  {bannerSlides.map((slide, idx) => (
+   <SwiperSlide key={idx} className="cursor-pointer">
+  <div className="h-full flex items-center">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-4 md:px-0">
+      {/* TEXTO */}
+      <div className="flex flex-col justify-center space-y-4">
+        <h2 className="text-5xl md:text-7xl font-bold text-white" data-aos="fade-right">
+          {slide.title}{" "}
+          <span
+            className={`inline-block px-4 py-2 text-5xl md:text-7xl text-white rounded ${slide.highlightBg}`}
           >
-            {bannerSlides.map((src, idx) => (
-              <SwiperSlide key={idx} className="cursor-pointer">
-                <div className="h-full flex items-center">
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div className="flex flex-col justify-center">
-                      <h1
-                        className="md:text-8xl text-5xl font-bold py-4"
-                        data-aos="fade-right"
-                      >
-                        mEDXpro 
-                      </h1>
-                      <p className="py-4" data-aos="fade-right">
-  Aplicación web disponible , app móvil proximamente</p>
+            {slide.highlight}
+          </span>
+        </h2>
+        <p className="text-xl md:text-2xl font-semibold text-[#B54B00]" data-aos="fade-right" data-aos-delay="200">
+          {slide.caption}
+        </p>
+        <p className="max-w-lg text-base md:text-lg text-white leading-relaxed" data-aos="fade-right" data-aos-delay="400">
+         
+  {slide.descriptionParts.map((part, i) => {
+    // 1) Si es un string, lo sacamos literal
+    if (typeof part === "string") {
+      return <span key={i}>{part}</span>;
+    }
+    // 2) Si es objeto, aplicamos font-bold y/o block según las flags
+    const classes = [
+      part.bold ? "font-bold" : "",
+      part.block ? "block" : ""
+    ]
+      .filter(Boolean)
+      .join(" ");
 
-                  </div>
-                    <div
-                      className="flex items-center justify-center"
-                      data-aos="fade-left"
-                    >
-                      <Image src={src} width={600} height={600} alt="App view" />
-                    </div>
-                  </div>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+    return (
+      <span key={i} className={classes}>
+        {part.text}
+      </span>
+    );
+  })}
+        </p>
+      </div>
+      {/* IMAGEN */}
+      <div className="flex items-center justify-center" data-aos="fade-left">
+        <Image
+          src={slide.img}
+          width={600}
+          height={400}
+          alt={`${slide.title} view`}
+          className="object-contain"
+        />
+      </div>
+    </div>
+  </div>
+</SwiperSlide>
+
+  ))}
+</Swiper>
+
+
         </div>
          {/* ===== Info Cards ===== */}
         <section className="max-w-screen-xl mx-auto px-4  pt-8 pb-4" data-aos="fade-up">
